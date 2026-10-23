@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="MyExcel.MainPage"
+			 Title="MyExcel">
+
+	<ContentPage.MenuBarItems>
+		<MenuBarItem Text="Файл">
+			<MenuFlyoutItem Text="Відкрити..." Clicked="OnOpenClicked" />
+			<MenuFlyoutItem Text="Зберегти" Clicked="OnSaveClicked" />
+			<MenuFlyoutItem Text="Зберегти як..." Clicked="OnSaveAsClicked" />
+			<MenuFlyoutSeparator />
+			<MenuFlyoutItem Text="Відкрити з Google Drive..." Clicked="OnOpenFromGoogleDriveClicked" />
+			<MenuFlyoutItem Text="Зберегти на Google Drive..." Clicked="OnSaveToGoogleDriveClicked" />
+			<MenuFlyoutSeparator />
+			<MenuFlyoutItem Text="Вихід" Clicked="OnExitClicked" />
+		</MenuBarItem>
+		<MenuBarItem Text="Таблиця">
+			<MenuFlyoutItem Text="Додати рядок" Clicked="OnAddRowClicked" />
+			<MenuFlyoutItem Text="Видалити рядок" Clicked="OnRemoveRowClicked" />
+			<MenuFlyoutSeparator />
+			<MenuFlyoutItem Text="Додати стовпчик" Clicked="OnAddColumnClicked" />
+			<MenuFlyoutItem Text="Видалити стовпчик" Clicked="OnRemoveColumnClicked" />
+		</MenuBarItem>
+		<MenuBarItem Text="Вигляд">
+			<MenuFlyoutItem Text="Режим ВИРАЗ" Clicked="OnExpressionModeClicked" />
+			<MenuFlyoutItem Text="Режим ЗНАЧЕННЯ" Clicked="OnValueModeClicked" />
+		</MenuBarItem>
+		<MenuBarItem Text="Довідка">
+			<MenuFlyoutItem Text="Довідка" Clicked="OnHelpClicked" />
+		</MenuBarItem>
+	</ContentPage.MenuBarItems>
+
+	<Grid RowDefinitions="Auto,Auto,*" Padding="10" RowSpacing="8">
+		<ScrollView Grid.Row="0" Orientation="Horizontal">
+			<HorizontalStackLayout Spacing="6">
+				<Button Text="Відкрити" Clicked="OnOpenClicked" />
+				<Button Text="Зберегти" Clicked="OnSaveClicked" />
+				<Button Text="Відкрити з Google Drive" Clicked="OnOpenFromGoogleDriveClicked" />
+				<Button Text="Зберегти на Google Drive" Clicked="OnSaveToGoogleDriveClicked" />
+				<Button Text="Додати рядок" Clicked="OnAddRowClicked" />
+				<Button Text="Видалити рядок" Clicked="OnRemoveRowClicked" />
+				<Button Text="Додати стовпчик" Clicked="OnAddColumnClicked" />
+				<Button Text="Видалити стовпчик" Clicked="OnRemoveColumnClicked" />
+				<Button x:Name="ModeButton" Text="Режим: ВИРАЗ" Clicked="OnToggleModeClicked" />
+				<Button Text="Довідка" Clicked="OnHelpClicked" />
+				<Button Text="Про програму" Clicked="OnAboutClicked" />
+				<Button Text="Вийти" Clicked="OnExitClicked" />
+			</HorizontalStackLayout>
+		</ScrollView>
+
+		<Label x:Name="CellInfoLabel"
+			   Grid.Row="1"
+			   Text="Оберіть клітинку."
+			   LineBreakMode="WordWrap" />
+
+		<ScrollView Grid.Row="2" Orientation="Both">
+			<Grid x:Name="SheetGrid" ColumnSpacing="2" RowSpacing="2" />
+		</ScrollView>
+	</Grid>
+</ContentPage>

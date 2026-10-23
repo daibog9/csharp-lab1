@@ -1,0 +1,8 @@
+bin/
+obj/
+.idea/
+.vs/
+*.user
+.DS_Store
+__MACOSX/
+client_secrets.json
