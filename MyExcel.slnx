@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="MyExcel.Core/MyExcel.Core.csproj" />
   <Project Path="MyExcel/MyExcel.csproj" />
+  <Project Path="MyExcel.Tests/MyExcel.Tests.csproj" />
 </Solution>
