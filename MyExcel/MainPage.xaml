@@ -6,6 +6,7 @@
 
 	<ContentPage.MenuBarItems>
 		<MenuBarItem Text="Файл">
+			<MenuFlyoutItem Text="Нова" Clicked="OnNewClicked" />
 			<MenuFlyoutItem Text="Відкрити..." Clicked="OnOpenClicked" />
 			<MenuFlyoutItem Text="Зберегти" Clicked="OnSaveClicked" />
 			<MenuFlyoutItem Text="Зберегти як..." Clicked="OnSaveAsClicked" />
@@ -34,6 +35,7 @@
 	<Grid RowDefinitions="Auto,Auto,*" Padding="10" RowSpacing="8">
 		<ScrollView Grid.Row="0" Orientation="Horizontal">
 			<HorizontalStackLayout Spacing="6">
+				<Button Text="Нова" Clicked="OnNewClicked" />
 				<Button Text="Відкрити" Clicked="OnOpenClicked" />
 				<Button Text="Зберегти" Clicked="OnSaveClicked" />
 				<Button Text="Відкрити з Google Drive" Clicked="OnOpenFromGoogleDriveClicked" />

@@ -41,7 +41,8 @@ namespace MyExcel
 			Результат / може бути дробовим (7 / 2 = 3.5); mod і div - лише для цілих чисел.
 			Порожня клітинка в обчисленнях дорівнює 0.
 
-			Файли: «Зберегти» записує таблицю у файл .json, «Відкрити» читає її з файлу.
+			Файли: «Нова» створює порожню таблицю, «Зберегти» записує таблицю у файл .json,
+			«Відкрити» читає її з файлу.
 			«Зберегти на Google Drive» і «Відкрити з Google Drive» працюють із таблицями
 			у папці MyExcel на вашому Google Drive (під час першого використання
 			потрібно увійти в Google-акаунт у браузері).
@@ -302,6 +303,27 @@ namespace MyExcel
 
 			change();
 			_hasUnsavedChanges = true;
+			BuildGrid();
+		}
+
+		private async void OnNewClicked(object? sender, EventArgs e)
+		{
+			CommitFocusedEntry();
+
+			if (_hasUnsavedChanges)
+			{
+				bool isNewConfirmed = await AskAsync("Нова таблиця",
+					"Таблиця містить незбережені зміни, їх буде втрачено. Чи дійсно ви хочете створити нову таблицю?");
+				if (!isNewConfirmed)
+				{
+					return;
+				}
+			}
+
+			_spreadsheet = new Spreadsheet();
+			_hasUnsavedChanges = false;
+			_currentFilePath = null;
+			_selectedAddress = null;
 			BuildGrid();
 		}
 
