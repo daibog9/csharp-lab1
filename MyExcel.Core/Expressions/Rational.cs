@@ -93,13 +93,14 @@ namespace MyExcel.Core.Expressions
 		public static Rational IntegerDivide(Rational a, Rational b)
 		{
 			EnsureIntegers(a, b);
-			return new Rational(BigInteger.Divide(a.Numerator, b.Numerator));
+			BigInteger remainder = EuclideanRemainder(a.Numerator, b.Numerator);
+			return new Rational((a.Numerator - remainder) / b.Numerator);
 		}
 
 		public static Rational Remainder(Rational a, Rational b)
 		{
 			EnsureIntegers(a, b);
-			return new Rational(BigInteger.Remainder(a.Numerator, b.Numerator));
+			return new Rational(EuclideanRemainder(a.Numerator, b.Numerator));
 		}
 
 		public bool Equals(Rational other)
@@ -142,6 +143,17 @@ namespace MyExcel.Core.Expressions
 			}
 
 			return sign + integerText + "." + fractionText;
+		}
+
+		private static BigInteger EuclideanRemainder(BigInteger dividend, BigInteger divisor)
+		{
+			BigInteger remainder = BigInteger.Remainder(dividend, divisor);
+			if (remainder.Sign < 0)
+			{
+				remainder += BigInteger.Abs(divisor);
+			}
+
+			return remainder;
 		}
 
 		private static void EnsureIntegers(Rational a, Rational b)
