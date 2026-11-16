@@ -8,7 +8,7 @@ namespace MyExcel.Core.Spreadsheets
 		public const int DefaultColumnCount = 10;
 		public const int MinRowCount = 1;
 		public const int MinColumnCount = 1;
-		public const int MaxRowCount = 100;
+		public const int MaxRowCount = 26;
 		public const int MaxColumnCount = 26;
 
 		private readonly List<List<SpreadsheetCell>> _rows = new List<List<SpreadsheetCell>>();
